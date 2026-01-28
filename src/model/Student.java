@@ -7,8 +7,7 @@ public class Student{
     private int marks;
 
     //Constructor
-    public Student(int id, String name, int marks) {
-        this.id = id;
+    public Student(String name, int marks) {
         this.name = name;
         this.marks = marks;
     }
