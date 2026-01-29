@@ -46,6 +46,41 @@ public class StudentDAO {
             e.printStackTrace();
         }
     }
+
+    public boolean updateStudentMarks(int id, int marks) {
+
+        String sql = "update students set marks = ? where id = ?";
+
+        try(Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)) {
+
+                ps.setInt(1, marks);
+                ps.setInt(2, id);
+
+                int rows = ps.executeUpdate();
+                return rows > 0;
+            } catch(Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+    }
+
+    public boolean deleteStudent(int id) {
+
+        String sql = "delete from students where id = ?";
+
+        try(Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)) {
+
+                ps.setInt(1, id);
+
+                int rows = ps.executeUpdate();
+                return rows > 0;
+            } catch(Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+    }
 }
 
 
