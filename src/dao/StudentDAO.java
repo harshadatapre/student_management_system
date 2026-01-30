@@ -20,7 +20,7 @@ public class StudentDAO {
             int rows = ps.executeUpdate();
             return rows > 0;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Failed to add student.");
             return false;
         }
     }
@@ -35,13 +35,21 @@ public class StudentDAO {
 
                 System.out.println("\n--- Student List ---");
 
+                boolean found = false;
+
                 while(rs.next()) {
+                    found = true;
                     int id = rs.getInt("id");
                     String name = rs.getString("name");
                     int marks = rs.getInt("marks");
 
                     System.out.println("ID: " + id + ", Name: " + name + ", Marks: " + marks);
                 }
+
+                if(!found) {
+                    System.out.println("No students found.");
+                }
+                
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,9 +66,15 @@ public class StudentDAO {
                 ps.setInt(2, id);
 
                 int rows = ps.executeUpdate();
-                return rows > 0;
+                
+                if(rows > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+
             } catch(Exception e) {
-                e.printStackTrace();
+                System.out.println("Database update failed.");
                 return false;
             }
     }
@@ -75,9 +89,15 @@ public class StudentDAO {
                 ps.setInt(1, id);
 
                 int rows = ps.executeUpdate();
-                return rows > 0;
+                
+                if(rows > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+
             } catch(Exception e) {
-                e.printStackTrace();
+                System.out.println("Database delete failed.");
                 return false;
             }
     }

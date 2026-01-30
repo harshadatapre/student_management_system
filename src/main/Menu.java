@@ -6,7 +6,7 @@ import model.Student;
 
 public class Menu {
     
-    public static void main(String[] args) {
+    public void start() {
         
         Scanner sc = new Scanner(System.in);
         StudentDAO dao = new StudentDAO();
@@ -33,6 +33,7 @@ public class Menu {
             
             switch (choice) {
                 case 1:
+                    sc.nextLine();
                     System.out.println("Enter student name:");
                     String name = sc.nextLine();
 
@@ -113,11 +114,5 @@ public class Menu {
                     System.out.println("Invalid choice. Try again.");
             }
         }
-
-        
-
-        
-
-        
     }
 }
