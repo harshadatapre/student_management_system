@@ -9,6 +9,8 @@ The application performs CRUD operations on a MySQL databasa using a menu-driven
 - View All Students
 - Update Student Marks
 - Delete Student
+- Search Student by ID
+- Exit Application
 
 ## Technologies Used
 - Core Java
@@ -22,6 +24,7 @@ The application performs CRUD operations on a MySQL databasa using a menu-driven
 - auto_increment primary key
 - Exception Handling
 - Input Validation
+- Menu-driven console application
 
 ## Project Structure
 src/
@@ -37,5 +40,11 @@ lib/
 2. Compile the project using:
 ```bash
 javac -d out src/util/DBConnection.java src/model/Student.java src/dao/StudentDAO.java src/main/Menu.java src/main/MainApp.java
-```3. Run the application
+```
+3. Run the application
+```bash
 java -cp "out;lib/*" main.MainApp
+```
+
+##Author
+Harshada Tapre

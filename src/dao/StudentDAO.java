@@ -101,6 +101,31 @@ public class StudentDAO {
                 return false;
             }
     }
+
+    public Student getStudentById(int id) {
+
+        String sql = "select id, name, marks from students where id = ?";
+
+        try(Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)) {
+
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+
+                if(rs.next()) {
+                    return new Student(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getInt("marks")
+                    );
+                } 
+        } catch(Exception e) {
+                e.printStackTrace();
+        }
+
+        return null; //Student not found
+    }
+    
 }
 
 

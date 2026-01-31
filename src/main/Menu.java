@@ -18,7 +18,8 @@ public class Menu {
             System.out.println("2. View All Students");
             System.out.println("3. Update Student Marks");
             System.out.println("4. Delete Student");
-            System.out.println("5. Exit");
+            System.out.println("5. Search Student by ID");
+            System.out.println("6. Exit");
             System.out.print("Enter choice: ");
 
             int choice;
@@ -104,8 +105,28 @@ public class Menu {
                         System.out.println("Student not found.");
                     }
                     break;
-            
+
                 case 5:
+                    System.out.println("Enter student ID: ");
+                    int searchId = sc.nextInt();
+
+                    if(searchId <= 0) {
+                        System.out.println("Invalid ID.");
+                        break;
+                    }
+
+                    Student found = dao.getStudentById(searchId);
+
+                    if(found != null) {
+                        System.out.println("ID: " + found.getId());
+                        System.out.println("Name: " + found.getName());
+                        System.out.println("Marks: " + found.getMarks());
+                    } else {
+                        System.out.println("Student not found.");
+                    }
+                    break;
+            
+                case 6:
                     System.out.println("Thank you! Exiting...");
                     sc.close();
                     System.exit(0);
